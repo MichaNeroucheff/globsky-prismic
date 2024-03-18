@@ -4,6 +4,7 @@ import Bounded from "@/components/Bounded";
 import Heading from "@/components/Heading";
 import {createClient} from "@/prismicio";
 import {PrismicNextImage} from "@prismicio/next";
+import { SliceContext } from "@/types/SliceContext";
 
 const components: JSXMapSerializer = {
   heading2: ({children}) => (
@@ -27,12 +28,12 @@ const components: JSXMapSerializer = {
 /**
  * Props for `Testimonials`.
  */
-export type TestimonialsProps = SliceComponentProps<Content.TestimonialsSlice>;
+export type TestimonialsProps = SliceComponentProps<Content.TestimonialsSlice, SliceContext>;
 
 /**
  * Component for "Testimonials" Slices.
  */
-const Testimonials =  async ({ slice, lang }: TestimonialsProps): Promise<JSX.Element> => {
+const Testimonials =  async ({ slice, context }: TestimonialsProps): Promise<JSX.Element> => {
 
     const client = createClient();
     const testimonials = await Promise.all(
@@ -40,7 +41,7 @@ const Testimonials =  async ({ slice, lang }: TestimonialsProps): Promise<JSX.El
         if(
             isFilled.contentRelationship(item.testimonial) && item.testimonial.uid
         ){
-          return client.getByUID("testimonial",item.testimonial.uid, { lang })
+          return client.getByUID("testimonial",item.testimonial.uid, { lang: context.lang })
         }
       } )
   )

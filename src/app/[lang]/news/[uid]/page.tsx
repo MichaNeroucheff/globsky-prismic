@@ -37,8 +37,9 @@ export async function generateMetadata({
 
 export default async function Page({ params }: { params: Params }) {
     const client = createClient();
+    const lang = params.lang;
     const page = await client.getByUID('news', params.uid, {
-            lang: params.lang,
+        lang: lang,
         })
         .catch(() => notFound());
 
@@ -47,9 +48,9 @@ export default async function Page({ params }: { params: Params }) {
     return (
         <>
             <LanguageSwitcher locales={locales} />
-            <Header lang={params.lang} locales={locales} />
-            <SliceZone slices={page.data.slices} components={components} />
-            <Footer lang={params.lang} />
+            <Header lang={lang} locales={locales} />
+            <SliceZone slices={page.data.slices} components={components} context={{ lang: lang }}/>
+            <Footer lang={lang} />
         </>
     );
 }

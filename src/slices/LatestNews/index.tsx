@@ -5,6 +5,7 @@ import Heading from "@/components/Heading";
 import {createClient} from "@/prismicio";
 import {PrismicNextImage, PrismicNextLink} from "@prismicio/next";
 import Button from "@/components/Button";
+import { SliceContext } from "@/types/SliceContext";
 
 const components: JSXMapSerializer = {
   heading2: ({children}) => (
@@ -37,21 +38,19 @@ const components: JSXMapSerializer = {
 /**
  * Props for `LatestNews`.
  */
-export type LatestNewsProps = SliceComponentProps<Content.LatestNewsSlice>;
+export type LatestNewsProps = SliceComponentProps<Content.LatestNewsSlice, SliceContext>;
 
 /**
  * Component for "LatestNews" Slices.
  */
-const LatestNews =  async ({ slice }: LatestNewsProps): Promise<JSX.Element> => {
+const LatestNews =  async ({ slice, context }: LatestNewsProps): Promise<JSX.Element> => {
 
   const client = createClient();
-  const lang = 'fr-fr';
+
     const news = await client.getAllByType("news", {
     limit: 3,
-    lang: lang
+    lang: context.lang
   });
-
-    console.log(news);
 
   return (
       <Bounded
@@ -84,7 +83,7 @@ const LatestNews =  async ({ slice }: LatestNewsProps): Promise<JSX.Element> => 
                       components={components}
                   />
                     <Button
-                        field={item}
+                        field={item.url}
                     >
                         {slice.primary.button_text}
                     </Button>
