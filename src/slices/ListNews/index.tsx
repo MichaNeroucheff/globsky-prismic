@@ -6,6 +6,7 @@ import {createClient} from "@/prismicio";
 import {PrismicNextImage, PrismicNextLink} from "@prismicio/next";
 import Button from "@/components/Button";
 import clsx from "clsx/clsx";
+import { SliceContext } from "@/types/SliceContext";
 
 const components: JSXMapSerializer = {
   heading2: ({children}) => (
@@ -38,22 +39,21 @@ const components: JSXMapSerializer = {
 /**
  * Props for `ListNews`.
  */
-export type ListNewsProps = SliceComponentProps<Content.ListNewsSlice>;
+export type ListNewsProps = SliceComponentProps<Content.ListNewsSlice, SliceContext>;
 
 /**
  * Component for "ListNews" Slices.
  */
-const ListNews =  async ({ slice }: ListNewsProps): Promise<JSX.Element> => {
+const ListNews =  async ({ slice, context }: ListNewsProps): Promise<JSX.Element> => {
 
   const client = createClient();
-  const lang = 'fr-fr';
   const page = 1;
   const news = await client.getByType("news", {
       orderings: {
           field: 'document.first_publication_date',
           direction: 'desc',
       },
-      lang: lang,
+      lang: context.lang,
       pageSize: 6,
       page: page,
   });

@@ -82,11 +82,11 @@ const LatestNews =  async ({ slice, context }: LatestNewsProps): Promise<JSX.Ele
                       field={item.data.topic}
                       components={components}
                   />
-                    <Button
-                        field={item.url}
-                    >
-                        {slice.primary.button_text}
-                    </Button>
+                  <Button
+                      field={item}
+                  >
+                      {slice.primary.button_text}
+                  </Button>
                 </div>
               </div>
           ))}
