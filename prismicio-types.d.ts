@@ -63,6 +63,51 @@ export type NavigationDocument<Lang extends string = string> =
     Lang
   >;
 
+type NavigationwithsubDocumentDataSlicesSlice = NavigationWithSubItemSlice;
+
+/**
+ * Content for NavigationWithSub documents
+ */
+interface NavigationwithsubDocumentData {
+  /**
+   * Name field in *NavigationWithSub*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigationwithsub.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *NavigationWithSub*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigationwithsub.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<NavigationwithsubDocumentDataSlicesSlice>;
+}
+
+/**
+ * NavigationWithSub document from Prismic
+ *
+ * - **API ID**: `navigationwithsub`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NavigationwithsubDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<NavigationwithsubDocumentData>,
+    "navigationwithsub",
+    Lang
+  >;
+
 type NewsDocumentDataSlicesSlice =
   | LatestNewsSlice
   | TextWithImageSlice
@@ -352,6 +397,7 @@ export type TestimonialDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | NavigationDocument
+  | NavigationwithsubDocument
   | NewsDocument
   | PageDocument
   | SettingsDocument
@@ -876,6 +922,86 @@ export type ListNewsSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *NavigationWithSubItem → Primary*
+ */
+export interface NavigationWithSubItemSliceDefaultPrimary {
+  /**
+   * Title field in *NavigationWithSubItem → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation_with_sub_item.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * link field in *NavigationWithSubItem → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation_with_sub_item.primary.link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Primary content in *NavigationWithSubItem → Items*
+ */
+export interface NavigationWithSubItemSliceDefaultItem {
+  /**
+   * Child title field in *NavigationWithSubItem → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation_with_sub_item.items[].child_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  child_title: prismic.KeyTextField;
+
+  /**
+   * Child link field in *NavigationWithSubItem → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation_with_sub_item.items[].child_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  child_link: prismic.LinkField;
+}
+
+/**
+ * Default variation for NavigationWithSubItem Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NavigationWithSubItemSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<NavigationWithSubItemSliceDefaultPrimary>,
+  Simplify<NavigationWithSubItemSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *NavigationWithSubItem*
+ */
+type NavigationWithSubItemSliceVariation = NavigationWithSubItemSliceDefault;
+
+/**
+ * NavigationWithSubItem Shared Slice
+ *
+ * - **API ID**: `navigation_with_sub_item`
+ * - **Description**: NavigationWithSubItem
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NavigationWithSubItemSlice = prismic.SharedSlice<
+  "navigation_with_sub_item",
+  NavigationWithSubItemSliceVariation
+>;
+
+/**
  * Primary content in *Testimonials → Primary*
  */
 export interface TestimonialsSliceDefaultPrimary {
@@ -1063,6 +1189,9 @@ declare module "@prismicio/client" {
       NavigationDocument,
       NavigationDocumentData,
       NavigationDocumentDataNavigationItem,
+      NavigationwithsubDocument,
+      NavigationwithsubDocumentData,
+      NavigationwithsubDocumentDataSlicesSlice,
       NewsDocument,
       NewsDocumentData,
       NewsDocumentDataSlicesSlice,
@@ -1104,6 +1233,11 @@ declare module "@prismicio/client" {
       ListNewsSliceDefault,
       ListNewsSlice2Columns,
       ListNewsSlice3Columns,
+      NavigationWithSubItemSlice,
+      NavigationWithSubItemSliceDefaultPrimary,
+      NavigationWithSubItemSliceDefaultItem,
+      NavigationWithSubItemSliceVariation,
+      NavigationWithSubItemSliceDefault,
       TestimonialsSlice,
       TestimonialsSliceDefaultPrimary,
       TestimonialsSliceDefaultItem,

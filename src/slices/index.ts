@@ -8,6 +8,7 @@ export const components = {
   hero: dynamic(() => import("./Hero")),
   latest_news: dynamic(() => import("./LatestNews")),
   list_news: dynamic(() => import("./ListNews")),
+  navigation_with_sub_item: dynamic(() => import("./NavigationWithSubItem")),
   testimonials: dynamic(() => import("./Testimonials")),
   text_with_image: dynamic(() => import("./TextWithImage")),
 };

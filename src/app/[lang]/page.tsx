@@ -7,6 +7,7 @@ import { getLocales } from '@/utils/getLocales';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import NavigationWithSub from "@/components/NavigationWithSub";
 
 export async function generateMetadata({ params: { lang } }): Promise<Metadata> {
     const client = createClient();
@@ -36,6 +37,7 @@ export default async function Index({ params: { lang } }) {
         <>
             <LanguageSwitcher locales={locales} />
             <Header lang={ lang } locales={locales} />
+            <NavigationWithSub lang={ lang } locales={locales} />
             <SliceZone slices={home.data.slices} components={components} context={{ lang: lang }}/>
             <Footer lang={ lang } />
         </>
