@@ -13,6 +13,17 @@
 						}
 					}
 				]
+			},
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Spend"
+						}
+					}
+				]
 			}
 		},
 		"items": []
@@ -28,6 +39,17 @@
 						"type": "paragraph",
 						"content": {
 							"text": "Veniam qui mollit ea anim fugiat quis fugiat officia anim. Proident Lorem non mollit voluptate consectetur Lorem sit non quis ipsum nulla adipisicing."
+						}
+					}
+				]
+			},
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Victory"
 						}
 					}
 				]
@@ -51,6 +73,17 @@
 						"type": "paragraph",
 						"content": {
 							"text": "Nisi reprehenderit consequat mollit nostrud et ad fugiat duis reprehenderit commodo eu dolore dolore ullamco laborum."
+						}
+					}
+				]
+			},
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Begun"
 						}
 					}
 				]

@@ -6,6 +6,15 @@ import Heading from "@/components/Heading";
 import clsx from "clsx";
 
 const components: JSXMapSerializer = {
+    heading1: ({children}) => (
+        <Heading
+            as="h1"
+            size="lg"
+            className="md:mb-4 mb-2 mt-8"
+        >
+            {children}
+        </Heading>
+    ),
   heading2: ({children}) => (
       <Heading
           as="h2"
@@ -58,7 +67,13 @@ const FreeText = ({ slice }: FreeTextProps): JSX.Element => {
                 data-slice-type={slice.slice_type}
                 data-slice-variation={slice.variation}
             >
-              <div className="">
+                <div className="">
+                    <PrismicRichText
+                        field={slice.primary.heading}
+                        components={components}
+                    />
+                </div>
+                <div className="">
                 <PrismicRichText
                     field={slice.primary.body}
                     components={components}
@@ -71,7 +86,13 @@ const FreeText = ({ slice }: FreeTextProps): JSX.Element => {
                 data-slice-type={slice.slice_type}
                 data-slice-variation={slice.variation}
             >
-              <div className="md:columns-2 xl:gap-20 lg:gap-10">
+                <div className="">
+                    <PrismicRichText
+                        field={slice.primary.heading}
+                        components={components}
+                    />
+                </div>
+                <div className="md:columns-2 xl:gap-20 lg:gap-10">
                 <PrismicRichText
                     field={slice.primary.body}
                     components={components}
@@ -84,7 +105,13 @@ const FreeText = ({ slice }: FreeTextProps): JSX.Element => {
                 data-slice-type={slice.slice_type}
                 data-slice-variation={slice.variation}
             >
-              <div className="md:columns-3 xl:gap-20 lg:gap-10">
+                <div className="">
+                    <PrismicRichText
+                        field={slice.primary.heading}
+                        components={components}
+                    />
+                </div>
+                <div className="md:columns-3 xl:gap-20 lg:gap-10">
                 <PrismicRichText
                     field={slice.primary.body}
                     components={components}

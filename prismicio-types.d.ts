@@ -483,6 +483,16 @@ export type CallToActionSlice = prismic.SharedSlice<
  */
 export interface FreeTextSliceDefaultPrimary {
   /**
+   * Heading field in *FreeText → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: free_text.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
    * Body field in *FreeText → Primary*
    *
    * - **Field Type**: Rich Text
@@ -511,6 +521,16 @@ export type FreeTextSliceDefault = prismic.SharedSliceVariation<
  */
 export interface FreeTextSlice2ColumnsPrimary {
   /**
+   * Heading field in *FreeText → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: free_text.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
    * Body field in *FreeText → Primary*
    *
    * - **Field Type**: Rich Text
@@ -538,6 +558,16 @@ export type FreeTextSlice2Columns = prismic.SharedSliceVariation<
  * Primary content in *FreeText → Primary*
  */
 export interface FreeTextSlice3ColumnsPrimary {
+  /**
+   * Heading field in *FreeText → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: free_text.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
   /**
    * Body field in *FreeText → Primary*
    *

@@ -24,7 +24,7 @@ export default async function NavigationWithSub({ lang, locales }) {
             </Link>
             </div>
             <nav>
-                <ul className="flex">
+                <ul className="flex gap-4">
                     {/* Renders top-level links. */}
                     {navigation.data.slices.map((slice) => {
                         return (
